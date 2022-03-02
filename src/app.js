@@ -1,5 +1,7 @@
 let t 
 let nl
+let totalX
+let totalY
 
 
 function setup() {
@@ -7,25 +9,39 @@ function setup() {
   background('#000000')
    t = 0 
    nl = 0.02
+   totalX = 200
+   totalY = 200
+   colorMode(HSL, 100)
+
+   for (let x = 0; x < totalX; x++) {
+     for (let y = 0; y < totalY; y++) {
+       let n = noise(x * nl, y * nl)
+
+       let finalColor = color(n * 100, 100, 50)
+
+       setup(x, y, finalColor)
+     } 
+   }
+   updatePixels()
 }
 
 function draw() {
   // background('#00000011')
 }
 
-function mouseDragged() {
-  // let n = noise(t * nl)
-  let n = noise(mouseX * nl, mouseY * nl)
-  let size = 5 + n * 20
-  // let c1 = color('#2727e6')
-  // let c2 = color('#ffffff')
-  // let finalColor = lerpColor(c1, c2, n)
+// function mouseDragged() {
+//   // let n = noise(t * nl)
+//   let n = noise(mouseX * nl, mouseY * nl)
+//   let size = 5 + n * 20
+//   // let c1 = color('#2727e6')
+//   // let c2 = color('#ffffff')
+//   // let finalColor = lerpColor(c1, c2, n)
 
-  colorMode(HSL, 100)
-  let finalColor = color(n * 100, 100, 50)
+//   colorMode(HSL, 100)
+//   let finalColor = color(n * 100, 100, 50)
 
-  noStroke()
-  fill(finalColor)
-  circle(mouseX, mouseY, size)
-  t += 1
-}
+//   noStroke()
+//   fill(finalColor)
+//   circle(mouseX, mouseY, size)
+//   t += 1
+// }
