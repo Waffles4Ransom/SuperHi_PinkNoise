@@ -1,5 +1,6 @@
 let t 
 let nl
+let density
 let totalX
 let totalY
 
@@ -9,6 +10,7 @@ function setup() {
   background('#000000')
    t = 0 
    nl = 0.02
+   density = 5
    totalX = 200
    totalY = 200
    colorMode(HSL, 100)
@@ -16,8 +18,8 @@ function setup() {
    for (let x = 0; x < totalX; x++) {
      for (let y = 0; y < totalY; y++) {
        let n = noise(x * nl, y * nl)
-
-       let finalColor = color(n * 100, 100, 50)
+       let rn = n * density - floor(n * density)
+       let finalColor = color(rn * 100, 100, 50)
 
        setup(x, y, finalColor)
      } 
@@ -25,9 +27,9 @@ function setup() {
    updatePixels()
 }
 
-function draw() {
+// function draw() {
   // background('#00000011')
-}
+// }
 
 // function mouseDragged() {
 //   // let n = noise(t * nl)
